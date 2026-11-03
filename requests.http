@@ -1,0 +1,44 @@
+@url = http://localhost:3000/platos
+@id = 6ae92f6693b207586f3bed35
+
+### Listar todos los platos
+GET {{url}}
+
+### Obtener un plato por id
+GET {{url}}/{{id}}
+
+### Alta de un plato
+POST {{url}}
+Content-Type: application/json
+
+{
+  "nombre": "Empanadas de carne",
+  "descripcion": "Empanadas criollas al horno",
+  "ingredientes": ["harina", "carne", "cebolla", "huevo"],
+  "precio": 5400,
+  "aptoCeliacos": false,
+  "aptoVeganos": false,
+  "aptoDiabeticos": false,
+  "calorias": 780,
+  "imagen": "https://images.unsplash.com/photo-1604467794349-0b74285de7e7"
+}
+
+### Modificación de un plato
+PUT {{url}}/{{id}}
+Content-Type: application/json
+
+{
+  "precio": 5900
+}
+
+### Baja de un plato
+DELETE {{url}}/{{id}}
+
+### Alta inválida (tiene que dar 400)
+POST {{url}}
+Content-Type: application/json
+
+{
+  "nombre": "Plato mal cargado",
+  "precio": -10
+}
